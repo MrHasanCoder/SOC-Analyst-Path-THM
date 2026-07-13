@@ -316,10 +316,13 @@ A **Threat Researcher (Threat Intelligence Analyst)** studies threat actors, att
 ```text
 THM{trysecureme_is_secured!}
 ```
-used chatgpt to write the post , copy pasted the content from thm rooms , found the flags and uploaded
+
 ---
 ## Question
 
 ### Complete the room!
 
 **Answer:** *No answer needed.*
+--
+used chatgpt to write the post , copy pasted the content from thm rooms , found the flags and uploaded.
+--
