@@ -1,111 +1,248 @@
+## Alert Funnel
 
-###Alert Funnel 
+First, L1 analysts receive the alerts in a **SIEM**, **EDR**, or a **ticket management platform**. Most of the alerts are closed as **False Positives (FPs)** or are handled at the **L1** level. However, complex and threatening alerts are escalated to **L2**, where most breaches are remediated.
 
-first, L1 analysts receive the alerts in a SIEM , EDR , or a ticket management platform. Most of the alerts are closed as False Positives or are handled on L1 level, but complex and threatening ones are sent to L2 that remediate most breaches. And to send the alerts further, you need to learn three new terms: reporting, escalation, and communication.
+To move alerts through the SOC workflow, you need to understand three key concepts:
 
-Funnel going from L1 dealing with 100 alerts, escalating 10 True Positives to L2, and only 1 incident requiring DFIR in the end.
+- **Alert Reporting**
+- **Alert Escalation**
+- **Communication**
 
+> **Alert Funnel**
+>
+> **100 Alerts (L1)** → **10 True Positives (L2)** → **1 DFIR Incident**
 
+---
 
+## Alert Reporting
 
-###Alert Reporting
+Before closing or passing an alert to L2, you may be required to create a report. Depending on team standards and the severity of the alert, a simple comment may not be enough. Instead, you may need to document your investigation in detail, ensuring all relevant evidence is included.
 
-Before closing or passing the alert to L2, you might have to report it. Depending on team standards and alert severity, instead of a short alert comment, you can be required to document your investigation in detail, ensuring all relevant evidence is included. This is especially important for True Positives, which require escalation.
+This is especially important for **True Positives**, as they require escalation.
 
-###Alert Escalation
-If the True Positive alert requires additional actions or deeper investigation, escalate it to the L2 analyst for further review following the agreed procedures. That's where your alert report comes in handy since L2 will use it to get the initial context and spend less on the analysis from scratch.
+---
 
-###Communication
-You may also need to communicate with other departments during or after the analysis. For example, ask the IT team if they confirm granting administrative privileges to some users or contact HR to get more information about the newly hired employee.
+## Alert Escalation
 
-Questions : 
+If a **True Positive** alert requires deeper investigation or additional actions, escalate it to the **L2 analyst** following your organization's procedures.
 
-1) What is the process of passing suspicious alerts to an L2 analyst for review?
---> Alert Escalation 
+A well-written alert report helps the L2 analyst quickly understand the context, reducing the need to repeat the investigation from scratch.
 
-2) What is the process of formally describing alert details and findings?
---> Alert Reporting 
+---
 
-####THE 5W APPROACH 
+## Communication
 
-the Five Ws (opens in new tab) approach and include at least these items in the report:
+During or after an investigation, you may need to communicate with other departments.
 
-    Who: Which user logs in, runs the command, or downloads the file.
-    What: What exact action or event sequence was performed.
-    When: When exactly did the suspicious activity start and ended.
-    Where: Which device, IP, or website was involved in the alert.
-    Why: The most important W, the reasoning for your final verdict.
+Examples:
 
-Questions : 
+- Contact the **IT Team** to verify whether administrative privileges were intentionally granted.
+- Contact **HR** to gather information about a newly hired employee.
 
-1) According to the SOC dashboard (opens in new tab), which user email leaked the sensitive document? 
---> m.boslan@tryhackme.thm 
+---
 
-2)Looking at the new alerts, who is the "sender" of the suspicious, likely phishing email?
---> support@microsoft.com
+## Questions
 
-3)Open the phishing alert, read its details, and try to understand the activity.
-Using the Five Ws template, what flag did you receive after writing a good report?
-Note: Assign yourself, move the alert to In Progress, and fill in the Analyst Comment.
+### 1. What is the process of passing suspicious alerts to an L2 analyst for review?
 
--->  THM{nice_attempt_faking_microsoft_support}
+**Answer:**
+```
+Alert Escalation
+```
 
-####Escalation Steps
+### 2. What is the process of formally describing alert details and findings?
 
-To escalate the alert, in most cases, all you have to do is to reassign the alert to the L2 on shift and ping them in corporate chat or in person. In some teams though, you may be required to create a formal written escalation request with dozens of required fields.
+**Answer:**
+```
+Alert Reporting
+```
 
-No matter what the agreements are, L2 will eventually receive the ticket from you, read your report, and contact you in case of any questions. Once everything is clear, the L2 analyst will typically research the alert details further, validate if the alert is indeed a True Positive, communicate with other departments if needed, and, for major incidents, start a formal Incident Response process.
+---
 
-###Requesting L2 Support
+# The 5W Approach
 
-It is generally fine for L1 to request senior support if something is unclear. Especially in your first months, it's always better to discuss the alert and clarify procedures than to blindly close the alert you don't understand yourself. The procedures for requesting support may differ, but the flow generally looks like this:
-    
-SOC  Dashboard Escalation    
-   
+Every investigation report should answer the **Five Ws**:
 
-1    Move the alert to In Progress status and do the analysis
-2   Write an alert report and set your verdict, such as True Positive
-3    If escalation is required, assign the alert to your L2 on shift
-4    L2 will receive a notification and start from your alert report
+| W | Description |
+|---|-------------|
+| **Who** | Which user logged in, ran the command, or downloaded the file? |
+| **What** | What exact action or sequence of events occurred? |
+| **When** | When did the suspicious activity start and end? |
+| **Where** | Which device, IP address, or website was involved? |
+| **Why** | Explain the reasoning behind your final verdict. |
 
-Questions : 
+---
 
-1) Who is your current L2 in the SOC dashboard (opens in new tab) that you can assign (escalate) the alerts to?
+## Questions
 
---> E.Fleming
+### 1. According to the SOC dashboard, which user email leaked the sensitive document?
 
-2) What flag did you receive after correctly escalating the alert from the previous task to L2?
-Note: Set the right assignee and add an intermediate verdict (TP or FP)
+**Answer:**
+```
+m.boslan@tryhackme.thm
+```
 
---> THM{good_job_escalating_your_first_alert}
+### 2. Looking at the new alerts, who is the sender of the suspicious phishing email?
 
-3) Now, investigate the second new alert and provide a detailed alert comment.
-What flag did you get after escalating this alert according to the workflow?
+**Answer:**
+```
+support@microsoft.com
+```
 
---> THM{looks_like_webshell_via_old_exchange}  
+### 3. Using the Five Ws template, what flag did you receive after writing a good report?
 
+> **Note:** Assign yourself, move the alert to **In Progress**, and fill in the **Analyst Comment**.
 
-####SOC Communication 
+**Answer:**
+```
+THM{nice_attempt_faking_microsoft_support}
+```
 
-The escalation and reporting topics should sound straightforward and logical to you. But, as always, it's easier said than done, and you should be prepared for unexpected scenarios and know what to do in critical cases. In the best scenario, the SOC team has its own Crisis Communication procedures - the guides and processes to help you and your teammates resolve the issues. If not, you are advised to read the cases below and be prepared to handle them effectively.
+---
 
-###Communication Cases
+# Escalation Steps
 
-1)You need to escalate an urgent, critical alert, but L2 is unavailable and does not respond for 30 minutes.
-2) Ensure you know where to find emergency contacts. First, try to call L2, then L3, and finally your manager.
-3)the alert about Slack/Teams account compromise requires you to validate the login with the affected user.
-4) Do not contact the user through the breached chat - use alternative contact methods like a phone call.
-5)You receive an overwhelming number of alerts during a short period of time, some of which are critical.
-6)Prioritise the alerts according to the workflow, but inform your L2 on shift about the situation.
-7)After a few days, you realise that you misclassified the alert and likely missed a malicious action.
-8)Immediately reach out to your L2 explaining your concerns. Threat actors can be silent for weeks before impact.
-9)You can not complete the alert triage since the SIEM logs are not parsed correctly or are not searchable.
-10) Do not skip the alert - investigate what you can and report the issue to your L2 on shift or SOC engineer.
+In most SOCs, escalating an alert is simple:
 
-Questions: 
+- Reassign the alert to the **L2 analyst** on shift.
+- Notify them through corporate chat or in person.
 
-1) Should you first try to contact your manager in case of a critical threat (Yea/Nay)?
---> Nay
+Some organizations require a formal written escalation request with multiple mandatory fields.
 
-2) Should you immediately contact your L2 if you think you missed the attack (Yea/Nay)?
---> Yea
+Once L2 receives the ticket, they will:
+
+- Read your investigation report.
+- Ask questions if needed.
+- Validate whether the alert is truly a **True Positive**.
+- Contact other departments when necessary.
+- Start the **Incident Response (IR)** process for major incidents.
+
+---
+
+# Requesting L2 Support
+
+It's completely acceptable for an L1 analyst to ask for help.
+
+Especially during your first few months, it's always better to ask questions than incorrectly close an alert.
+
+### SOC Escalation Workflow
+
+| Step | Action |
+|------|--------|
+| **1** | Move the alert to **In Progress** and investigate it. |
+| **2** | Write an alert report and set a verdict (**True Positive / False Positive**). |
+| **3** | Assign the alert to the **L2 analyst** if escalation is required. |
+| **4** | L2 receives the notification and continues the investigation. |
+
+---
+
+## Questions
+
+### 1. Who is your current L2 in the SOC dashboard?
+
+**Answer:**
+```
+E. Fleming
+```
+
+### 2. What flag did you receive after correctly escalating the previous alert?
+
+> **Note:** Set the correct assignee and add an intermediate verdict (**TP** or **FP**).
+
+**Answer:**
+```
+THM{good_job_escalating_your_first_alert}
+```
+
+### 3. Investigate the second alert and escalate it according to the workflow.
+
+**Answer:**
+```
+THM{looks_like_webshell_via_old_exchange}
+```
+
+---
+
+# SOC Communication
+
+Escalation and reporting may sound straightforward, but real-world SOC operations often involve unexpected situations.
+
+Most organizations maintain **Crisis Communication Procedures** to ensure incidents are handled effectively.
+
+---
+
+## Communication Cases
+
+### Case 1
+You need to escalate a **critical alert**, but the L2 analyst has not responded for 30 minutes.
+
+**Action**
+
+- Call **L2**
+- If unavailable, contact **L3**
+- Finally, contact your **manager**
+
+---
+
+### Case 2
+
+An alert indicates a possible **Slack/Teams account compromise**.
+
+**Action**
+
+Do **not** contact the user through the compromised chat platform.
+
+Use an alternative communication method such as a **phone call**.
+
+---
+
+### Case 3
+
+A large number of alerts arrive within a short period, including several critical ones.
+
+**Action**
+
+- Prioritize alerts according to SOC procedures.
+- Inform your **L2 analyst** immediately.
+
+---
+
+### Case 4
+
+Several days later, you realize you misclassified an alert.
+
+**Action**
+
+Immediately inform your **L2 analyst**.
+
+Threat actors may remain undetected for weeks before causing damage.
+
+---
+
+### Case 5
+
+The SIEM logs are missing or cannot be searched.
+
+**Action**
+
+- Investigate with the available evidence.
+- Report the logging issue to your **L2 analyst** or **SOC Engineer**.
+- Never ignore the alert.
+
+---
+
+## Questions
+
+### 1. Should you first contact your manager during a critical threat?
+
+**Answer**
+```
+Nay
+```
+
+### 2. Should you immediately contact your L2 if you think you missed an attack?
+
+**Answer**
+```
+Yea
+```
