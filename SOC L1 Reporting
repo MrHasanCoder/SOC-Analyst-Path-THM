@@ -14,6 +14,7 @@ To move alerts through the SOC workflow, you need to understand three key concep
 
 ---
 
+
 ## Alert Reporting
 
 Before closing or passing an alert to L2, you may be required to create a report. Depending on team standards and the severity of the alert, a simple comment may not be enough. Instead, you may need to document your investigation in detail, ensuring all relevant evidence is included.
