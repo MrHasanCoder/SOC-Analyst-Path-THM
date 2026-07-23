@@ -340,4 +340,4 @@ Trojan
 
 This room clearly showed why modern organizations rely on EDR instead of traditional antivirus alone. The biggest lesson for me was that detecting malicious **behavior** is often more valuable than detecting a known malicious file.
 
-Understanding process trees, endpoint telemetry, and response actions gave me a much better idea of how SOC analysts investigate incidents in real environments. The hands-on investigation inside the simulated EDR console made the concepts much easier to understand and connected the theory with practical analysis. :contentReference[oaicite:2]{index=2}
+Understanding process trees, endpoint telemetry, and response actions gave me a much better idea of how SOC analysts investigate incidents in real environments. The hands-on investigation inside the simulated EDR console made the concepts much easier to understand and connected the theory with practical analysis.
